@@ -1,7 +1,7 @@
 <template>
     <div class="navbar">
         <nav>
-            <img src="@/assets/logo.png" >
+            <router-link :to="{name:'Home'}"><img src="@/assets/logo.png" ></router-link>
             <div class="navHeader">
                 <h1><router-link :to="{name:'Home'}">API.<span class="blue">Coockbook</span> </router-link></h1>
                 <h5>PWSZ N3PAM ZMP project</h5>
