@@ -5,7 +5,7 @@
 ## ZMP PROJECT 
 
 
-<img src="https://github.com/LK-Herman/CoockBook/blob/16ed82d78a9f854759c7dbeb70ebb6da5b7e2113/src/assets/logo.png" alt="drawing" width="250" style="text-aling: center;" />
+<img src="src/assets/logo.png" alt="drawing" width="250" style="text-aling: center;" />
 
 Vue.js / Firebase / API
 
@@ -17,7 +17,4 @@ Cocktails: [API webpage - https://www.thecocktaildb.com/api.php](https://www.the
 
 ## Project website
 [API.Coockbook https://cookbook-307109.web.app](https://cookbook-307109.web.app)
-
-
-
 </div>

@@ -18,11 +18,11 @@
     
     <div class="meal">
       
-        <h2>Let's make some food! </h2>
+        <h4>Let's make some Teriyaki Chicken Casserole! </h4>
         <img class="coock" src="@/assets/chefa.png">
-        <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur pariatur laborum, ad dolorem asperiores cumque atque aut, dolor aperiam natus voluptatibus hic, quibusdam facere provident modi ullam facilis? Sapiente adipisci inventore reprehenderit voluptate eaque labore voluptatibus error neque, harum quo perferendis architecto praesentium rem blanditiis atque expedita asperiores provident aliquam quae odit totam eveniet necessitatibus tempora. Explicabo facere voluptatibus ut corporis ipsam earum magnam sint aspernatur laborum dolorem! Possimus iste nulla velit deleniti iusto. Dolorem perferendis optio tempora necessitatibus illum doloremque, vel sed expedita dignissimos minima commodi, ipsa deleniti! Natus cumque, cum animi fuga qui recusandae consequatur, nemo repellat, non suscipit optio voluptatibus consectetur possimus ipsa vel unde earum aliquam amet nobis! Iste, illo saepe magnam impedit, reprehenderit animi accusantium tempora ad in vitae veritatis officiis. Non excepturi minus deserunt, culpa at doloremque molestiae. Necessitatibus cupiditate, eaque, neque, quas repellendus maxime dolorum aspernatur repellat praesentium eos voluptates? Quasi nulla blanditiis saepe ipsam consectetur beatae porro, architecto aspernatur doloribus consequatur fugit, facere, itaque perferendis ea explicabo! Laborum, harum error itaque ab iure doloribus odio repudiandae praesentium voluptate, quaerat, cupiditate ea molestiae! Quam sed rerum ex architecto cupiditate autem fugiat temporibus iste quae dolorum molestiae, atque praesentium quasi, adipisci exercitationem. Natus, possimus!
-        </p>
+        <p>Ex deleniti aperiam iste voluptate debitis, ipsa a dolorum voluptatum nihil ullam delectus? Inventore commodi voluptate sunt nisi incidunt nostrum obcaecati, placeat nemo, unde facilis omnis deserunt eveniet maiores? Quod soluta, repellat iste ea eos, architecto ex perspiciatis quae, magnam deserunt distinctio! Similique ipsum eveniet rerum, eum neque, quae, a quo vel est eius expedita ut sint animi alias. Debitis quas ullam consequatur maxime! Impedit unde distinctio nam quos. Architecto, omnis a! </p>
+        <img id="dinner" src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg">
+        <p>Sapiente adipisci inventore reprehenderit voluptate eaque labore voluptatibus error neque, harum quo perferendis architecto praesentium rem blanditiis atque expedita asperiores provident aliquam quae odit totam eveniet necessitatibus tempora. Explicabo facere voluptatibus ut corporis ipsam earum magnam sint aspernatur laborum dolorem! Possimus iste nulla velit deleniti iusto. Dolorem perferendis optio tempora necessitatibus illum doloremque, vel sed expedita dignissimos minima commodi, ipsa deleniti! Natus cumque, cum animi fuga qui recusandae consequatur, nemo repellat, non suscipit optio voluptatibus consectetur possimus ipsa vel unde earum aliquam amet nobis! Iste, illo saepe magnam impedit, reprehenderit animi accusantium tempora ad in vitae veritatis officiis. Non excepturi minus deserunt, culpa at doloremque molestiae. Necessitatibus cupiditate, eaque, neque, quas repellendus maxime dolorum aspernatur repellat praesentium eos voluptates? Quasi nulla blanditiis saepe ipsam consectetur beatae porro, architecto aspernatur doloribus consequatur fugit, facere, itaque perferendis ea explicabo! Laborum, harum error itaque ab iure doloribus odio repudiandae praesentium voluptate, quaerat, cupiditate ea molestiae! Quam sed rerum ex architecto cupiditate autem fugiat temporibus iste quae dolorum molestiae, atque praesentium quasi, adipisci exercitationem. Natus, possimus!</p>
     </div>
      <div class="meal">
        <h2>Let's make some food! </h2>
@@ -53,6 +53,7 @@ export default {
 
 <style scoped>
 .meal{
+  
   text-align: center;  
   background: rgb(255, 255, 255);
   border-bottom: 1px solid;
@@ -61,12 +62,18 @@ export default {
   margin: 20px;
   width: 60%;
 }
+#dinner{
+  margin: 20px 0;
+   width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+}
 .mealContainer .meal a{
   
   margin: 10px;
 }
 h2, h4{
-  padding: 10px;
+  padding: 10px 0;
   text-align: left;
 }
 .meal a{

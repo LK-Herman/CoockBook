@@ -73,7 +73,7 @@ setup(){
 <style scoped>
 .navbar {
     padding: 16px 10px 0px 10px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     background:  rgb(255, 255, 255);
     box-shadow: 2px 2px 8px rgba(50,50,50,0.5);
     box-sizing: border-box;
@@ -87,9 +87,12 @@ setup(){
     color: white;
     display: block;
     width: 100%;
+    box-shadow: inset 0px 2px 30px rgba(1, 121, 168, 0.76) ; 
 }
 .btnNav:hover{
     background: var(--button2);
+    color: white;
+    box-shadow: none; 
 }
 .links2{
     text-align: center;

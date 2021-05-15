@@ -1,16 +1,22 @@
 <template>
+<div class="categoryPage">
     <div v-if="error" >{{ error }}</div>
-    <h1>Food categories</h1>
+    <div class="categoryTitle">
+        <div id="luigiDiv">
+          <img id="luigi" src="@/assets/chefa.png">
+        </div>
+        <h1>Food categories</h1>
+    </div>
     <div v-if="categories.length" class="catMenu">
         
         <div v-for="cat in categories" :key="cat.idCategory">
-            <h3 class="catTitle"> {{ cat.strCategory }}</h3>
+            <h3 > <a class="catTitle" :href="'#c'+cat.strCategory">{{ cat.strCategory }} </a></h3>
         </div>
     </div>
     <div v-if="categories.length" class="catContainer">
         <div class="catSingle" v-for="cat in categories" :key="cat.idCategory">
             
-                <h3 > {{ cat.strCategory }}</h3>
+                <h3 :id="'c'+cat.strCategory"> {{ cat.strCategory }}</h3>
                 <div>
                     <img class="catImage" :src="cat.strCategoryThumb">
                     <p> {{ cat.strCategoryDescription }}</p>
@@ -18,6 +24,7 @@
         </div>
     </div>
     <div v-if="!categories.length">Loading data...</div>
+</div>
 </template>
 
 <script>
@@ -59,6 +66,9 @@ export default {
 </script>
 
 <style scoped>
+.categoryPage{
+  margin-top: -30px;
+}
 .catContainer{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -86,8 +96,6 @@ text-align: center;
     border-radius: 0px;
     margin: 10px;
     border-bottom: solid 2px var(--button1);
-    
-       
 }
 .catContainer .catImage{
     margin: 10px;
@@ -105,23 +113,54 @@ text-align: center;
     
     border-bottom: solid 2px var(--button1);
     border-top: solid 2px var(--button1);
+
+    /* box-shadow: 0px 3px 4px rgba(50,50,50,0.4); */
 }
 h1{
     text-align: center;
     color: var(--button1);
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
+    font-family: 'Great Vibes', cursive;
+    font-size: 3em;
 }
 
 .catTitle{
-font-family: 'Great Vibes', cursive;
-font-size: 2em;
-margin: 20px 30px 0 30px;
-transition: ease 0.6s;
-padding: 10px;
+font-size: 0.8em;
+font-weight: 400;
+margin: 0px 10px 0px 10px;
+transition: ease 0.4s;
+padding: 4px 0px;
 cursor: pointer;
+
 }
 .catTitle:hover{
-    color: var(--button1);
-    transition: ease 0.6s;
+    color: var(--button2);
+    transition: ease 0.4s;
+}
+#luigiDiv{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+#luigi{
+  max-height: 100px;
+  max-width: 100px;
+  margin:0;
+  transform: translateY(20px);
+  z-index: 1;
+ 
+}
+.categoryTitle{
+  transform: translateY(32px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1{
+  background: white;
+  padding: 0 15px;
+  text-align: center;
+  margin: 0;
+    
 }
 </style>

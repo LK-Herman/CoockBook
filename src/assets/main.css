@@ -98,15 +98,14 @@ input, textarea {
   }
   .ingrContainer .list{
     padding-top: 10px;
-    padding-left: 30px;
+    /* padding-left: 30px; */
   }
   .mealContainer .meal{
-      margin:15px 10px;
-      
-      padding: 20px;
+      margin: 15px 10px;
+      padding: 30px;
   }
   .mealContainer .meal p{
-    padding: 10px;
+    padding: 10px 0;
     text-align: justify;
 }
   .mealContainer h4 {
