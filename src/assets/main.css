@@ -1,0 +1,149 @@
+/* custom font */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@100;200;300;400;600;700&display=swap');
+
+/* variables */
+:root {
+    --primary: #444444;
+    --secondary: #b4b4b4;
+    --button1: rgb(0, 167, 233);
+    --button2: orange;
+    --warning: #da0f41;
+    --back: #fff;
+}
+
+/* base styles */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: var(--primary);
+}
+body {
+    background: var(--back);
+}
+a {
+    text-decoration: none;
+}
+/* buttons */
+button, .btn {
+    background: var(--button1);
+    color: white;
+    border-radius: 8px;
+    border: 0;
+    padding: 8px 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px;
+}
+.blue{
+  color: var(--button1);
+}
+
+button:hover, .btn:hover {
+    background: var(--button2);
+    color: white;
+}
+button:disabled{
+    opacity: 0.5;
+    color: var(--primary);
+    background: var(--secondary);
+    cursor: not-allowed;
+}
+form {
+    max-width: 400px;
+    min-width: 300px;
+    margin: 0;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 1px 2px 3px rgba(50,50,50,0.5);
+    border: 1px solid var(--secondary);
+    background: rgb(246, 246, 246);
+}
+
+input, textarea {
+    border: 0;
+    border: 1px solid var(--secondary);
+    padding: 10px;
+    outline: none;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+.error {
+    color: var(--warning);
+    font-size: 14px;
+    margin: 16px 0;
+}
+.mealContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+ .mealContainer .ingrContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-flow: wrap;
+    
+    min-height: 300px;
+    
+  }
+  .mealContainer .categoryContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .ingrContainer .list{
+    padding-top: 10px;
+    padding-left: 30px;
+  }
+  .mealContainer .meal{
+      margin:15px 10px;
+      
+      padding: 20px;
+  }
+  .mealContainer .meal p{
+    padding: 10px;
+    text-align: justify;
+}
+  .mealContainer h4 {
+    margin-top: 15px;
+  }      
+  .mealContainer h3 {
+    margin: 15px 0px;
+  }
+  
+ .mealImg{
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgba(50,50,50,0.5);
+  }
+  .recipeTitle{
+    font-family: 'Great Vibes', cursive;
+    color: var(--button1);
+    text-align: left;
+    font-size: 3em;
+    margin-bottom: 35px;
+    /*transform: perspective(10cm) rotateX(-4deg) rotateY(20deg);
+    transition: ease 2s;
+
+}
+  .recipeTitle:hover{
+    transition: ease 2s;
+    transform: perspective(10cm) rotateX(-6deg) rotateY(-20deg);
+    */
+  }
+
+  .coock{
+    height: 100px;
+    width: 100px;
+    float: left;
+    padding-right: 15px;
+    padding-bottom: 0px;
+  }
+
