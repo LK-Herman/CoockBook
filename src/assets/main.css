@@ -127,7 +127,7 @@ input, textarea {
     color: var(--button1);
     text-align: left;
     font-size: 3em;
-    margin-bottom: 35px;
+    margin-bottom: 5px;
     /*transform: perspective(10cm) rotateX(-4deg) rotateY(20deg);
     transition: ease 2s;
 

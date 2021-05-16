@@ -1,62 +1,95 @@
 <template>
-    <div class="mealContainer">
-    <div class="meal">
+    <div class="welcome">
+      <img id="luigi" src="@/assets/chefa.png">
       <h2>Buongiorno!</h2>
-      <h4>How about some <span class="blue">dessert</span>? </h4>
-      <img class="coock" src="@/assets/chefa.png">
-      <p>(Tu opis losowej potrawy).Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed consequatur, facere quis assumenda asperiores minus reiciendis expedita, fugit, nam laudantium quo molestiae mollitia voluptatem suscipit numquam voluptatum corporis totam velit est repellat? Nesciunt eaque, tempora praesentium, numquam, aspernatur aperiam adipisci quam voluptates laudantium doloremque eos? Necessitatibus voluptatem hic exercitationem illum labore blanditiis repellat repellendus ipsum beatae consectetur quidem molestias dolor esse quo sequi, quas obcaecati libero sit minus eius et officia dolorem saepe.</p>
-      
-      <img id="dessert" src="https://www.themealdb.com/images/category/dessert.png">
-      
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, laudantium! Sed consequatur, facere quis assumenda asperiores minus reiciendis expedita, fugit, nam laudantium quo molestiae.</p>
-             
-       
-       <img class="coock" src="@/assets/chefa.png">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, laudantium! Sed consequatur, facere quis assumenda asperiores minus reiciendis expedita, fugit, nam laudantium quo molestiae mollitia voluptatem suscipit numquam voluptatum corporis totam velit est repellat? Nesciunt eaque, tempora praesentium, numquam, aspernatur aperiam adipisci quam voluptates laudantium doloremque eos? Necessitatibus voluptatem hic exercitationem illum labore blanditiis repellat repellendus ipsum beatae consectetur quidem molestias dolor esse quo.</p>
-      
+      <p v-if="meal && meal2">Please take a look at today's specials: {{meal.strMeal}} and {{meal2.strMeal}}.</p>
+    </div>
+    <div class="mealContainer">
+    <div v-if="meal"   class="meal">
+     
+        <h4>Let's make some {{meal.strArea}} {{meal.strCategory}}</h4> 
+        <h2 class="recipeTitle">{{meal.strMeal}}</h2>
+        
+        <p>Here is the list of ingredients:</p>
+        <p>
+        <ul>
+          <li v-if="meal.strIngredient1">{{meal.strIngredient1}} - {{meal.strMeasure1}}</li>
+          <li v-if="meal.strIngredient2">{{meal.strIngredient2}} - {{meal.strMeasure2}}</li>
+          <li v-if="meal.strIngredient3">{{meal.strIngredient3}} - {{meal.strMeasure3}}</li>
+          <li v-if="meal.strIngredient4">{{meal.strIngredient4}} - {{meal.strMeasure4}}</li>
+          <li v-if="meal.strIngredient5">{{meal.strIngredient5}} - {{meal.strMeasure5}}</li>
+          <li v-if="meal.strIngredient6">{{meal.strIngredient6}} - {{meal.strMeasure6}}</li>
+          <li v-if="meal.strIngredient7">{{meal.strIngredient7}} - {{meal.strMeasure7}}</li>
+          <li v-if="meal.strIngredient8">{{meal.strIngredient8}} - {{meal.strMeasure8}}</li>
+          <li v-if="meal.strIngredient9">{{meal.strIngredient9}} - {{meal.strMeasure9}}</li>
+         
+        </ul>
+        </p>
+        <img id="dinner" :src="meal.strMealThumb">
+        <img class="coock" src="@/assets/chefa.png">
+        <p>{{meal.strInstructions}}</p>
+    </div>
+     
+    <div v-if="meal2"   class="meal">
+     
+        <h4>Let's make some {{meal2.strArea}} {{meal2.strCategory}}</h4> 
+        <h2 class="recipeTitle">{{meal2.strMeal}}</h2>
+        
+        <p>Here is the list of ingredients:</p>
+        <p>
+        <ul>
+          <li v-if="meal2.strIngredient1">{{meal2.strIngredient1}} - {{meal2.strMeasure1}}</li>
+          <li v-if="meal2.strIngredient2">{{meal2.strIngredient2}} - {{meal2.strMeasure2}}</li>
+          <li v-if="meal2.strIngredient3">{{meal2.strIngredient3}} - {{meal2.strMeasure3}}</li>
+          <li v-if="meal2.strIngredient4">{{meal2.strIngredient4}} - {{meal2.strMeasure4}}</li>
+          <li v-if="meal2.strIngredient5">{{meal2.strIngredient5}} - {{meal2.strMeasure5}}</li>
+          <li v-if="meal2.strIngredient6">{{meal2.strIngredient6}} - {{meal2.strMeasure6}}</li>
+          <li v-if="meal2.strIngredient7">{{meal2.strIngredient7}} - {{meal2.strMeasure7}}</li>
+          <li v-if="meal2.strIngredient8">{{meal2.strIngredient8}} - {{meal2.strMeasure8}}</li>
+          <li v-if="meal2.strIngredient9">{{meal2.strIngredient9}} - {{meal2.strMeasure9}}</li>
+         
+        </ul>
+        </p>
+        <img id="dinner" :src="meal2.strMealThumb">
+        <img class="coock" src="@/assets/chefa.png">
+        <p>{{meal2.strInstructions}}</p>
     </div>
     
-    <div class="meal">
-      
-        <h4>Let's make some Teriyaki Chicken Casserole! </h4>
-        <img class="coock" src="@/assets/chefa.png">
-        <p>Ex deleniti aperiam iste voluptate debitis, ipsa a dolorum voluptatum nihil ullam delectus? Inventore commodi voluptate sunt nisi incidunt nostrum obcaecati, placeat nemo, unde facilis omnis deserunt eveniet maiores? Quod soluta, repellat iste ea eos, architecto ex perspiciatis quae, magnam deserunt distinctio! Similique ipsum eveniet rerum, eum neque, quae, a quo vel est eius expedita ut sint animi alias. Debitis quas ullam consequatur maxime! Impedit unde distinctio nam quos. Architecto, omnis a! </p>
-        <img id="dinner" src="https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg">
-        <p>Sapiente adipisci inventore reprehenderit voluptate eaque labore voluptatibus error neque, harum quo perferendis architecto praesentium rem blanditiis atque expedita asperiores provident aliquam quae odit totam eveniet necessitatibus tempora. Explicabo facere voluptatibus ut corporis ipsam earum magnam sint aspernatur laborum dolorem! Possimus iste nulla velit deleniti iusto. Dolorem perferendis optio tempora necessitatibus illum doloremque, vel sed expedita dignissimos minima commodi, ipsa deleniti! Natus cumque, cum animi fuga qui recusandae consequatur, nemo repellat, non suscipit optio voluptatibus consectetur possimus ipsa vel unde earum aliquam amet nobis! Iste, illo saepe magnam impedit, reprehenderit animi accusantium tempora ad in vitae veritatis officiis. Non excepturi minus deserunt, culpa at doloremque molestiae. Necessitatibus cupiditate, eaque, neque, quas repellendus maxime dolorum aspernatur repellat praesentium eos voluptates? Quasi nulla blanditiis saepe ipsam consectetur beatae porro, architecto aspernatur doloribus consequatur fugit, facere, itaque perferendis ea explicabo! Laborum, harum error itaque ab iure doloribus odio repudiandae praesentium voluptate, quaerat, cupiditate ea molestiae! Quam sed rerum ex architecto cupiditate autem fugiat temporibus iste quae dolorum molestiae, atque praesentium quasi, adipisci exercitationem. Natus, possimus!</p>
-    </div>
-     <div class="meal">
-       <h2>Let's make some food! </h2>
-      <p>
-      Oudiandae praesentium voluptate, quaerat, cupiditate ea molestiae! Quam sed rerum ex architecto cupiditate autem fugiat temporibus iste quae dolorum molestiae, atque praesentium quasi, adipisci exercitationem. Natus, possimus!
-      </p>
-    </div>
-    <div class="meal">
-      <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque tempore nulla tempora magnam, accusamus aperiam sint suscipit cupiditate impedit alias explicabo facere sit sed quidem quia corrupti neque id perspiciatis, voluptatibus amet praesentium, quod ullam ratione voluptates. Aliquid obcaecati nam aperiam a modi harum iste dolorum ullam at officiis. Commodi provident laboriosam incidunt, quas quibusdam rem voluptate ipsum non ullam.
-      </p>
-    </div>
      
       
   </div>
 </template>
 
 <script>
+import getMealById from '@/tools/getMealById.js'
+import { onMounted, ref } from 'vue'
 export default {
   name: 'Home',
-  setup(){
-   
+   setup(){
+     
+      const {meal, error, getRandomMeal} = getMealById()
+      const {meal: meal2, error:error2, getRandomMeal:getMeal2} = getMealById()
+      
+      onMounted( async () => {
+          const res = await getRandomMeal()  
+          const resp = await getMeal2()
+      })
 
-    return {  }
+      return { meal,meal2, error}
   }
 }
 </script>
 
 <style scoped>
 .meal{
-  
+  /* background: rgb(246, 246, 246); */
   text-align: center;  
-  background: rgb(255, 255, 255);
-  border-bottom: 1px solid;
+  border-top: 1px solid;
+  /* box-shadow:inset 0px 0px 85px rgba(50, 50, 50, 0.2); */
+  /* border-radius: 20px; */
+}
+.welcome{
+  text-align: center;
 }
 #dessert{
   margin: 20px;
@@ -72,12 +105,23 @@ export default {
   
   margin: 10px;
 }
-h2, h4{
+h4{
   padding: 10px 0;
   text-align: left;
 }
 .meal a{
   text-align: center;
   width: 92%;
+}
+ul{
+  padding: 5px 20px;
+}
+#luigi{
+  max-height: 100px;
+  max-width: 100px;
+  margin:0;
+  transform: translateY(20px);
+  z-index: 1;
+ 
 }
 </style>
