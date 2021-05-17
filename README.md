@@ -1,11 +1,11 @@
 <div align="center">
 
 
-# CoockBook
-## ZMP PROJECT 
+# API.CookBook
+## PWSZ N3PAM / ZMP PROJECT 
 
 
-<img src="src/assets/logo.png" alt="drawing" width="250" style="text-aling: center;" />
+<img src="src/assets/logo.png" alt="drawing" width="350" style="text-aling: center;" />
 
 Vue.js / Firebase / API
 
@@ -16,5 +16,5 @@ Cocktails: [API webpage - https://www.thecocktaildb.com/api.php](https://www.the
 
 
 ## Project website
-[API.Coockbook https://cookbook-307109.web.app](https://cookbook-307109.web.app)
+[API.Cookbook https://cookbook-307109.web.app](https://cookbook-307109.web.app)
 </div>
