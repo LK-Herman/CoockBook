@@ -8,7 +8,7 @@
             </div>
             <div class="links">
                 <div v-if="user">
-                    <router-link :to="{name: 'SingleMeal' }" class="play"> Favorites </router-link>      
+                    <router-link :to="{name: 'UserList' }" class="play"> Favorites </router-link>      
                     <span>Welcome {{user.displayName}}</span>
                 </div>
                 <div v-if="user">

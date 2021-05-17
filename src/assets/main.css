@@ -33,8 +33,10 @@ button, .btn {
     padding: 8px 12px;
     font-weight: 600;
     cursor: pointer;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     margin: 5px;
+    
 }
 .blue{
   color: var(--button1);
@@ -144,5 +146,9 @@ input, textarea {
     float: left;
     padding-right: 15px;
     padding-bottom: 0px;
+  }
+  .material-icons{
+    color: white;
+    margin-right: 8px;
   }
 

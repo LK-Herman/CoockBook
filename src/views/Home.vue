@@ -5,37 +5,40 @@
       <p v-if="meal && meal2">Please take a look at today's specials: {{meal.strMeal}} and {{meal2.strMeal}}.</p>
     </div>
     <div class="mealContainer">
+
     <div v-if="meal"   class="meal">
-     
         <h4>Let's make some {{meal.strArea}} {{meal.strCategory}}</h4> 
         <h2 class="recipeTitle">{{meal.strMeal}}</h2>
-        
         <p>Here is the list of ingredients:</p>
-        <p>
-        <ul>
-          <li v-if="meal.strIngredient1">{{meal.strIngredient1}} - {{meal.strMeasure1}}</li>
-          <li v-if="meal.strIngredient2">{{meal.strIngredient2}} - {{meal.strMeasure2}}</li>
-          <li v-if="meal.strIngredient3">{{meal.strIngredient3}} - {{meal.strMeasure3}}</li>
-          <li v-if="meal.strIngredient4">{{meal.strIngredient4}} - {{meal.strMeasure4}}</li>
-          <li v-if="meal.strIngredient5">{{meal.strIngredient5}} - {{meal.strMeasure5}}</li>
-          <li v-if="meal.strIngredient6">{{meal.strIngredient6}} - {{meal.strMeasure6}}</li>
-          <li v-if="meal.strIngredient7">{{meal.strIngredient7}} - {{meal.strMeasure7}}</li>
-          <li v-if="meal.strIngredient8">{{meal.strIngredient8}} - {{meal.strMeasure8}}</li>
-          <li v-if="meal.strIngredient9">{{meal.strIngredient9}} - {{meal.strMeasure9}}</li>
-         
-        </ul>
-        </p>
+        <div class="igrCont">
+            <p>
+            <ul>
+              <li v-if="meal.strIngredient1">{{meal.strIngredient1}} - {{meal.strMeasure1}}</li>
+              <li v-if="meal.strIngredient2">{{meal.strIngredient2}} - {{meal.strMeasure2}}</li>
+              <li v-if="meal.strIngredient3">{{meal.strIngredient3}} - {{meal.strMeasure3}}</li>
+              <li v-if="meal.strIngredient4">{{meal.strIngredient4}} - {{meal.strMeasure4}}</li>
+              <li v-if="meal.strIngredient5">{{meal.strIngredient5}} - {{meal.strMeasure5}}</li>
+              <li v-if="meal.strIngredient6">{{meal.strIngredient6}} - {{meal.strMeasure6}}</li>
+              <li v-if="meal.strIngredient7">{{meal.strIngredient7}} - {{meal.strMeasure7}}</li>
+              <li v-if="meal.strIngredient8">{{meal.strIngredient8}} - {{meal.strMeasure8}}</li>
+              <li v-if="meal.strIngredient9">{{meal.strIngredient9}} - {{meal.strMeasure9}}</li>
+            
+            </ul>
+            </p>
+            <button @click="handleAddToFavotites(meal)" ><span class="material-icons">favorite</span>Add to your favorites</button>
+        </div>
+        
         <img id="dinner" :src="meal.strMealThumb">
         <img class="coock" src="@/assets/chefa.png">
         <p>{{meal.strInstructions}}</p>
     </div>
      
     <div v-if="meal2"   class="meal">
-     
         <h4>Let's make some {{meal2.strArea}} {{meal2.strCategory}}</h4> 
         <h2 class="recipeTitle">{{meal2.strMeal}}</h2>
         
         <p>Here is the list of ingredients:</p>
+        <div class="igrCont">
         <p>
         <ul>
           <li v-if="meal2.strIngredient1">{{meal2.strIngredient1}} - {{meal2.strMeasure1}}</li>
@@ -50,6 +53,8 @@
          
         </ul>
         </p>
+        <button @click="handleAddToFavotites(meal2)"><span class="material-icons">favorite</span>Add to your favorites</button>
+        </div>
         <img id="dinner" :src="meal2.strMealThumb">
         <img class="coock" src="@/assets/chefa.png">
         <p>{{meal2.strInstructions}}</p>
@@ -63,19 +68,41 @@
 <script>
 import getMealById from '@/tools/getMealById.js'
 import { onMounted, ref } from 'vue'
+import getUser from '@/tools/getUser.js'
+import useCollection from '@/tools/useCollection'
 export default {
   name: 'Home',
    setup(){
      
       const {meal, error, getRandomMeal} = getMealById()
       const {meal: meal2, error:error2, getRandomMeal:getMeal2} = getMealById()
-      
+      const { user } = getUser()
+      const { error:errorCollecton, addDoc, isPending} = useCollection('favorites')
+
       onMounted( async () => {
           const res = await getRandomMeal()  
           const resp = await getMeal2()
       })
 
-      return { meal,meal2, error}
+      const handleAddToFavotites = async (meal) => {
+        
+            isPending.value = true
+            console.log(meal)
+            const res = await addDoc({
+                 favoriteMealId: meal.idMeal,
+                 userId: user.value.uid,
+                 userName: user.value.displayName,
+                 })
+           
+        
+         if(!error.value) {
+              console.log('Meal with id: ',meal.idMeal, ' was added to database.')
+         }
+         isPending.value = false
+      }
+      
+
+      return { meal,meal2, error, handleAddToFavotites, user}
   }
 }
 </script>
@@ -88,6 +115,17 @@ export default {
   border-bottom: 1px solid;
   /* box-shadow:inset 0px 0px 85px rgba(50, 50, 50, 0.2); */
   /* border-radius: 20px; */
+}
+.meal .igrCont{
+  display:grid;
+  grid-template-columns: 5fr 2fr;
+  
+}
+.meal .igrCont button{
+  width: 100%;
+  max-height: 60px;
+  align-self: start;
+  
 }
 .welcome{
   text-align: center;

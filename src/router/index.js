@@ -2,8 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/auth/Login.vue'
 import Signup from '../views/auth/Signup.vue'
-import SingleMeal from '../components/SingleMeal.vue'
+import MealDetails from '../components/MealDetails.vue'
 import Categories from '../views/Categories.vue'
+import UserList from '../views/UserList.vue'
 
 // route guard
 import { dbAuth } from '../firebase/config.js'
@@ -34,17 +35,26 @@ const routes = [
     name: 'Signup',
     component: Signup
   },
-  ,
-  {
-    path: '/meals',
-    name: 'SingleMeal',
-    component: SingleMeal
-  },
   {
     path: '/categories',
     name: 'Categories',
-    component: Categories
-  }
+    component: Categories,
+    beforeEnter: requiredAuth
+  },
+  {
+    path: '/favorites',
+    name: 'UserList',
+    component: UserList,
+    beforeEnter: requiredAuth
+
+  },
+  {
+    path: '/favorites/:id',
+    name: 'MealDetails',
+    component: MealDetails,
+    beforeEnter: requiredAuth,
+    props: true
+  },
   
 ]
 
