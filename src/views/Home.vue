@@ -70,6 +70,8 @@ import getMealById from '@/tools/getMealById.js'
 import { onMounted, ref } from 'vue'
 import getUser from '@/tools/getUser.js'
 import useCollection from '@/tools/useCollection'
+import { timestamp } from '@/firebase/config.js'
+
 export default {
   name: 'Home',
    setup(){
@@ -89,9 +91,15 @@ export default {
             isPending.value = true
             console.log(meal)
             const res = await addDoc({
-                 favoriteMealId: meal.idMeal,
+                 mealId: meal.idMeal,
+                 mealName: meal.strMeal,
+                 mealArea: meal.strArea,
+                 mealCategory: meal.strCategory,
+                 mealPhotoUrl: meal.strMealThumb,
                  userId: user.value.uid,
                  userName: user.value.displayName,
+
+                 createdAt: timestamp()
                  })
            
         

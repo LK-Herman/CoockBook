@@ -1,11 +1,15 @@
 <template>
-  <div class="imageTitle">
-       <div>
-            <h2>My Favorites</h2>
-            <div v-if="playlists">
+  <div>
+            <div class="headerFavorites">
+                <h2>Hello Chef!</h2>
+                <h4>Here's your favorites:</h4>
+            </div>
+            
+            <div v-if="favorites">
+                
                 <ListView :favorites="favorites" />
             </div>
-        </div>
+       
   </div>
 </template>
 
@@ -22,7 +26,7 @@ export default {
             'favorites',
             ['userId', '==', user.value.uid ] )
 
-        console.log(favorites)            
+        console.log(favorites.value, user.value.uid)            
         
         return { favorites, user }
     }
@@ -33,5 +37,8 @@ export default {
 </script>
 
 <style>
-
+.headerFavorites{
+    text-align: center;
+    margin: 30px;
+}
 </style>
