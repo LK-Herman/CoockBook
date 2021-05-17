@@ -3,7 +3,7 @@
         <nav>
             <router-link :to="{name:'Home'}"><img src="@/assets/logo.png" ></router-link>
             <div class="navHeader">
-                <h1><router-link :to="{name:'Home'}">API.<span class="blue">Coockbook</span> </router-link></h1>
+                <h1><router-link :to="{name:'Home'}">API.<span class="blue">Cookbook</span> </router-link></h1>
                 <h5>PWSZ N3PAM ZMP project</h5>
             </div>
             <div class="links">
@@ -144,7 +144,7 @@ nav .links a, button {
     font-size: 14px;
 }
 nav img {
-    max-height: 100px;
+    max-height: 120px;
 }
 .blue{
     font-weight: 600;
@@ -156,7 +156,7 @@ nav h1{
     margin-left: 20px;
     border-radius: 50%;
     border: none;
-    max-height: 45px;
+    max-height: 60px;
 }
 
 </style>

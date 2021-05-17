@@ -85,6 +85,7 @@ export default {
   /* background: rgb(246, 246, 246); */
   text-align: center;  
   border-top: 1px solid;
+  border-bottom: 1px solid;
   /* box-shadow:inset 0px 0px 85px rgba(50, 50, 50, 0.2); */
   /* border-radius: 20px; */
 }
