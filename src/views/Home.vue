@@ -172,6 +172,8 @@ export default {
   width: 100%;
   max-height: 60px;
   align-self: start;
+  display: flex;
+  align-items: center;
 }
 .meal .igrCont button:disabled{
   opacity: 0.4;
