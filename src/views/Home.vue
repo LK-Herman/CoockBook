@@ -4,7 +4,7 @@
       <h2>Buongiorno!</h2>
       <p v-if="meal && meal2">Please take a look at today's specials: {{meal.strMeal}} and {{meal2.strMeal}}.</p>
     </div>
-    <div class="mealContainer">
+    <div class="mealContainer" >
 
     <div v-if="meal"   class="meal">
         <h4>Let's make some {{meal.strArea}} {{meal.strCategory}}</h4> 
@@ -25,7 +25,11 @@
             
             </ul>
             </p>
-            <button @click="handleAddToFavotites(meal)" ><span class="material-icons">favorite</span>Add to your favorites</button>
+            <button id="buttonLeft"
+                    :class="{buttonDisabled : mealButtonFlagLeft}" 
+                    @click="handleAddToFavotites(meal, 'buttonLeft')" 
+                    ><span class="material-icons">favorite</span>Add to your favorites
+            </button>
         </div>
         
         <img id="dinner" :src="meal.strMealThumb">
@@ -53,7 +57,11 @@
          
         </ul>
         </p>
-        <button @click="handleAddToFavotites(meal2)"><span class="material-icons">favorite</span>Add to your favorites</button>
+        <button id="buttonRight" 
+                :class="{buttonDisabled : mealButtonFlagRight}" 
+                @click="handleAddToFavotites(meal2,'buttonRight')"
+                ><span class="material-icons">favorite</span>Add to your favorites
+        </button>
         </div>
         <img id="dinner" :src="meal2.strMealThumb">
         <img class="coock" src="@/assets/chefa.png">
@@ -67,50 +75,81 @@
 
 <script>
 import getMealById from '@/tools/getMealById.js'
-import { onMounted, ref } from 'vue'
+import { onBeforeMount, onMounted, onUpdated, ref } from 'vue'
 import getUser from '@/tools/getUser.js'
 import useCollection from '@/tools/useCollection'
+import getCollection from '@/tools/getCollection'
 import { timestamp } from '@/firebase/config.js'
 
 export default {
   name: 'Home',
    setup(){
      
+      const mealButtonFlagLeft = ref(false)
+      const mealButtonFlagRight = ref(false)
       const {meal, error, getRandomMeal} = getMealById()
       const {meal: meal2, error:error2, getRandomMeal:getMeal2} = getMealById()
       const { user } = getUser()
-      const { error:errorCollecton, addDoc, isPending} = useCollection('favorites')
+      const { error:errorCollecton, addDoc, isPending, docInCollection} = useCollection('favorites')
+      let favoriteMeals = ref([])
 
+      const handleEvent = async () =>{
+          const { documents: favorites} = await getCollection(
+          'favorites',
+          ['userId', '==', user.value.uid ] )
+
+          favoriteMeals = await ({...favorites})
+          //  await console.log('FAVORITES: ',favoriteMeals.value)
+          // mealButtonFlagLeft.value =await  docInCollection(favorites.value, meal.idMeal)
+          // mealButtonFlagRight.value =await docInCollection(favorites.value, meal2.idMeal)
+      }
+     
       onMounted( async () => {
+          mealButtonFlagLeft.value = false
+          mealButtonFlagRight.value = false
           const res = await getRandomMeal()  
           const resp = await getMeal2()
+      
       })
 
-      const handleAddToFavotites = async (meal) => {
+
+      const handleAddToFavotites = async (recipe, id) => {
         
             isPending.value = true
-            console.log(meal)
+            console.log(recipe)
             const res = await addDoc({
-                 mealId: meal.idMeal,
-                 mealName: meal.strMeal,
-                 mealArea: meal.strArea,
-                 mealCategory: meal.strCategory,
-                 mealPhotoUrl: meal.strMealThumb,
+                 mealId: recipe.idMeal,
+                 mealName: recipe.strMeal,
+                 mealArea: recipe.strArea,
+                 mealCategory: recipe.strCategory,
+                 mealPhotoUrl: recipe.strMealThumb,
                  userId: user.value.uid,
                  userName: user.value.displayName,
 
                  createdAt: timestamp()
                  })
-           
         
          if(!error.value) {
-              console.log('Meal with id: ',meal.idMeal, ' was added to database.')
+              console.log('Meal with id: ',recipe.idMeal, ' was added to database.')
          }
+         if(recipe.idMeal == meal.value.idMeal) { mealButtonFlagLeft.value = true}
+         if(recipe.idMeal == meal2.value.idMeal) { mealButtonFlagRight.value = true}
+         document.getElementById(id).innerHTML = "Added to favorites"
+         document.getElementById(id).disabled = true
          isPending.value = false
       }
       
 
-      return { meal,meal2, error, handleAddToFavotites, user}
+      return { meal,
+               meal2, 
+               error, 
+               handleAddToFavotites, 
+               user, 
+               mealButtonFlagLeft, 
+               mealButtonFlagRight, 
+               docInCollection, 
+               favoriteMeals, 
+               handleEvent}
   }
 }
 </script>
@@ -133,8 +172,14 @@ export default {
   width: 100%;
   max-height: 60px;
   align-self: start;
-  
 }
+.meal .igrCont button:disabled{
+  opacity: 0.4;
+}
+/* .buttonDisabled{
+  display: none;
+  opacity: 0.6;
+} */
 .welcome{
   text-align: center;
 }

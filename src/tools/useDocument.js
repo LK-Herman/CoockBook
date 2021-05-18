@@ -37,6 +37,7 @@ const useDocument = (collection, id) => {
         }
     }
 
+    
     return {error, isPending, deleteDoc, updateDoc}
 }
 

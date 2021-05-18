@@ -20,7 +20,18 @@ const useCollection = (collection) => {
             isPending.value = false
         }
     }
-    return { error, addDoc, isPending}
+
+
+    const docInCollection = async (meals, id) => {
+        let res = await meals.find((meal) => {
+            return meal.mealId === id
+        })
+        console.log('docInCollection response: ',res)
+        if (res) return true
+        return false
+    }
+
+    return { error, addDoc, isPending, docInCollection}
 
 }
 

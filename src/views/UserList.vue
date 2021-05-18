@@ -26,7 +26,7 @@ export default {
             'favorites',
             ['userId', '==', user.value.uid ] )
 
-        console.log(favorites.value, user.value.uid)            
+               
         
         return { favorites, user }
     }
