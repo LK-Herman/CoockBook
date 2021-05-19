@@ -37,7 +37,7 @@
             <router-link class="btnNav" :to="{name: 'Home'}">Random recipe</router-link>
             <router-link class="btnNav" :to="{name: 'Categories'}">Search by category</router-link>
             <router-link class="btnNav" :to="{name: 'Categories'}">Search by world region</router-link>
-            <router-link class="btnNav" :to="{name: 'Categories'}">Search by name</router-link>
+            <router-link class="btnNav" :to="{name: 'SearchByName'}">Search by name</router-link>
             <router-link class="btnNav" :to="{name: 'Categories'}">Search by ingredient</router-link>
         </div>
     </div>

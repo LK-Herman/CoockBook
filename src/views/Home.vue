@@ -67,7 +67,7 @@
 
 
 <script>
-import getMealById from '@/tools/getMealById.js'
+import getMeal from '@/tools/getMeal.js'
 import { onMounted, ref } from 'vue'
 import getUser from '@/tools/getUser.js'
 import getCollection from '@/tools/getCollection'
@@ -77,8 +77,8 @@ export default {
   name: 'Home',
   components: { AddToFavorites },
    setup(){
-      const {meal, error, getRandomMeal} = getMealById()
-      const {meal: meal2, error:error2, getRandomMeal:getMeal2} = getMealById()
+      const {meal, error, getRandomMeal} = getMeal()
+      const {meal: meal2, error:error2, getRandomMeal:getMeal2} = getMeal()
       const { user } = getUser()
       const leftButton = 'leftButton'
       const rightButton = 'rightButton'

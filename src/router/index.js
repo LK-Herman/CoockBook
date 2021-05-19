@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/auth/Login.vue'
 import Signup from '../views/auth/Signup.vue'
 import MealDetails from '../components/MealDetails.vue'
+import SearchByName from '../components/SearchByName.vue'
 import Categories from '../views/Categories.vue'
 import UserList from '../views/UserList.vue'
 
@@ -49,11 +50,17 @@ const routes = [
 
   },
   {
-    path: '/favorites/:id',
+    path: '/meals/:id',
     name: 'MealDetails',
     component: MealDetails,
     beforeEnter: requiredAuth,
     props: true
+  },
+  {
+    path: '/meals',
+    name: 'SearchByName',
+    component: SearchByName,
+    beforeEnter: requiredAuth,
   },
   
 ]

@@ -1,21 +1,42 @@
 import { ref } from 'vue'
 
-const getMealById = () => {
+const getMeal = () => {
 
 
 const meal = ref(null)
+const meals = ref(null)
 const error = ref(null)
-const uri = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i='
+const uriById = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i='
 const randomUri = 'https://www.themealdb.com/api/json/v1/1/random.php'
-const getMeal = async (id) => {
+const uriByName = 'https://www.themealdb.com/api/json/v1/1/search.php?s='
+
+
+const getMealById = async (id) => {
       try {
-        let data = await fetch(uri + id)
+        let data = await fetch(uriById + id)
         if (!data.ok){
           throw Error('No data available')
         }
         meal.value = await data.json()
         // = meal.value.meals[0]
         meal.value = meal.value.meals[0]
+
+      } 
+      catch (err) {
+        error.value = err.message
+        console.log(error.value)
+      }
+    }
+
+    const getMealByName = async (mealName) => {
+      try {
+        let data = await fetch(uriByName + mealName)
+        if (!data.ok){
+          throw Error('No data available')
+        }
+        meals.value = await data.json()
+        // = meal.value.meals[0]
+        meals.value = meals.value.meals
 
       } 
       catch (err) {
@@ -40,6 +61,6 @@ const getMeal = async (id) => {
           console.log(error.value)
         }
       }
-    return {meal, error, getMeal, getRandomMeal}
+    return {meal, meals, error, getMealById, getRandomMeal, getMealByName}
 }
-    export default getMealById
+    export default getMeal
