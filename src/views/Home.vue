@@ -25,11 +25,8 @@
             
             </ul>
             </p>
-            <button id="buttonLeft"
-                    :class="{buttonDisabled : mealButtonFlagLeft}" 
-                    @click="handleAddToFavotites(meal, 'buttonLeft')" 
-                    ><span class="material-icons">favorite</span>Add to your favorites
-            </button>
+            <AddToFavorites v-if="favorites" :buttonId="leftButton" :meal="meal" :favorites="favorites" />
+          
         </div>
         
         <img id="dinner" :src="meal.strMealThumb">
@@ -57,99 +54,52 @@
          
         </ul>
         </p>
-        <button id="buttonRight" 
-                :class="{buttonDisabled : mealButtonFlagRight}" 
-                @click="handleAddToFavotites(meal2,'buttonRight')"
-                ><span class="material-icons">favorite</span>Add to your favorites
-        </button>
+        <AddToFavorites v-if="favorites" :buttonId="rightButton" :meal="meal2" :favorites="favorites" />
+      
         </div>
         <img id="dinner" :src="meal2.strMealThumb">
         <img class="coock" src="@/assets/chefa.png">
         <p>{{meal2.strInstructions}}</p>
     </div>
-    
-     
-      
   </div>
 </template>
 
+
+
 <script>
 import getMealById from '@/tools/getMealById.js'
-import { onBeforeMount, onMounted, onUpdated, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import getUser from '@/tools/getUser.js'
-import useCollection from '@/tools/useCollection'
 import getCollection from '@/tools/getCollection'
-import { timestamp } from '@/firebase/config.js'
+import AddToFavorites from '@/components/AddToFavorites.vue'
 
 export default {
   name: 'Home',
+  components: { AddToFavorites },
    setup(){
-     
-      const mealButtonFlagLeft = ref(false)
-      const mealButtonFlagRight = ref(false)
       const {meal, error, getRandomMeal} = getMealById()
       const {meal: meal2, error:error2, getRandomMeal:getMeal2} = getMealById()
       const { user } = getUser()
-      const { error:errorCollecton, addDoc, isPending, docInCollection} = useCollection('favorites')
-      let favoriteMeals = ref([])
+      const leftButton = 'leftButton'
+      const rightButton = 'rightButton'
 
-      const handleEvent = async () =>{
-          const { documents: favorites} = await getCollection(
+      const { documents: favorites} = getCollection(
           'favorites',
           ['userId', '==', user.value.uid ] )
-
-          favoriteMeals = await ({...favorites})
-          //  await console.log('FAVORITES: ',favoriteMeals.value)
-          // mealButtonFlagLeft.value =await  docInCollection(favorites.value, meal.idMeal)
-          // mealButtonFlagRight.value =await docInCollection(favorites.value, meal2.idMeal)
-      }
      
       onMounted( async () => {
-          mealButtonFlagLeft.value = false
-          mealButtonFlagRight.value = false
           const res = await getRandomMeal()  
           const resp = await getMeal2()
       
       })
 
-
-      const handleAddToFavotites = async (recipe, id) => {
-        
-            isPending.value = true
-            console.log(recipe)
-            const res = await addDoc({
-                 mealId: recipe.idMeal,
-                 mealName: recipe.strMeal,
-                 mealArea: recipe.strArea,
-                 mealCategory: recipe.strCategory,
-                 mealPhotoUrl: recipe.strMealThumb,
-                 userId: user.value.uid,
-                 userName: user.value.displayName,
-
-                 createdAt: timestamp()
-                 })
-        
-         if(!error.value) {
-              console.log('Meal with id: ',recipe.idMeal, ' was added to database.')
-         }
-         if(recipe.idMeal == meal.value.idMeal) { mealButtonFlagLeft.value = true}
-         if(recipe.idMeal == meal2.value.idMeal) { mealButtonFlagRight.value = true}
-         document.getElementById(id).innerHTML = "Added to favorites"
-         document.getElementById(id).disabled = true
-         isPending.value = false
-      }
-      
-
       return { meal,
                meal2, 
                error, 
-               handleAddToFavotites, 
                user, 
-               mealButtonFlagLeft, 
-               mealButtonFlagRight, 
-               docInCollection, 
-               favoriteMeals, 
-               handleEvent}
+               favorites, 
+               leftButton,
+               rightButton}
   }
 }
 </script>
@@ -176,7 +126,7 @@ export default {
   align-items: center;
 }
 .meal .igrCont button:disabled{
-  opacity: 0.4;
+  opacity: 0.5;
 }
 /* .buttonDisabled{
   display: none;

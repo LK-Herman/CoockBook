@@ -45,10 +45,7 @@ export default {
         //posts.value = await data.json()
         categories.value = await data.json()
         categories.value = categories.value.categories
-        console.log(categories)
-        console.log(categories.value)
-
-        console.log('Długość tablicy: ' + categories.value.length)
+        
       } 
       catch (err) {
         error.value = err.message

@@ -22,11 +22,12 @@ const useCollection = (collection) => {
     }
 
 
-    const docInCollection = async (meals, id) => {
-        let res = await meals.find((meal) => {
+    const docInCollection = (meals, id) => {
+        let res = meals.find((meal) => {
             return meal.mealId === id
         })
-        console.log('docInCollection response: ',res)
+        // if (res) console.log('If true, RES = ',res)
+        // if (!res) console.log('If false, RES = ',res)
         if (res) return true
         return false
     }

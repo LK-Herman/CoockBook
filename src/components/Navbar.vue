@@ -11,7 +11,7 @@
                     <router-link :to="{name: 'UserList' }" class="play"> Favorites </router-link>      
                     <span>Welcome {{user.displayName}}</span>
                 </div>
-                <div v-if="user">
+                <div v-if="user.displayName">
                     <div v-if="user.photoURL !== null" >
                         <img :src="user.photoURL" class="userphoto">
                     </div>
@@ -34,7 +34,7 @@
         </nav>
         <div v-if="user" class="links2">
             <router-link class="btnNav" :to="{name: 'Categories'}">Food Categories</router-link>
-            <router-link class="btnNav" :to="{name: 'Categories'}">Random recipe</router-link>
+            <router-link class="btnNav" :to="{name: 'Home'}">Random recipe</router-link>
             <router-link class="btnNav" :to="{name: 'Categories'}">Search by category</router-link>
             <router-link class="btnNav" :to="{name: 'Categories'}">Search by world region</router-link>
             <router-link class="btnNav" :to="{name: 'Categories'}">Search by name</router-link>
