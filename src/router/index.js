@@ -4,6 +4,9 @@ import Login from '../views/auth/Login.vue'
 import Signup from '../views/auth/Signup.vue'
 import MealDetails from '../components/MealDetails.vue'
 import SearchByName from '../components/SearchByName.vue'
+import SearchByArea from '../components/SearchByArea.vue'
+import SearchByCategory from '../components/SearchByCategory.vue'
+import SearchByIngredient from '../components/SearchByIngredient.vue'
 import Categories from '../views/Categories.vue'
 import UserList from '../views/UserList.vue'
 
@@ -37,7 +40,7 @@ const routes = [
     component: Signup
   },
   {
-    path: '/categories',
+    path: '/allCategories',
     name: 'Categories',
     component: Categories,
     beforeEnter: requiredAuth
@@ -60,6 +63,24 @@ const routes = [
     path: '/meals',
     name: 'SearchByName',
     component: SearchByName,
+    beforeEnter: requiredAuth,
+  },
+  {
+    path: '/areas',
+    name: 'SearchByArea',
+    component: SearchByArea,
+    beforeEnter: requiredAuth,
+  },
+  {
+    path: '/categories',
+    name: 'SearchByCategory',
+    component: SearchByCategory,
+    beforeEnter: requiredAuth,
+  },
+  {
+    path: '/ingredients',
+    name: 'SearchByIngredient',
+    component: SearchByIngredient,
     beforeEnter: requiredAuth,
   },
   

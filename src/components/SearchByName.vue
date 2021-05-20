@@ -1,11 +1,15 @@
 <template>
     <form class="searchForm" @submit.prevent="handleSubmit">
+        
         <label>Search by meal name:</label>
         <input type="text" placeholder="type in a meal name..." v-model="mealName">
-        <button>Search</button>
+        
+        <button id="searchButton">Search</button>
     </form>
     <div v-if="meals">
-        <div v-for="meal in meals" :key="meal.idMeal">
+        <MealBar :meals="meals"/>
+
+        <!-- <div v-for="meal in meals" :key="meal.idMeal">
         
             <div class="testing">
                 <img class="image" :src="meal.strMealThumb">
@@ -29,28 +33,34 @@
                 <h3>{{ meal.idMeal }}</h3>
           
             </div>
-        </div>
+        </div> -->
     </div>
-    <div v-else>
-        No results...
+    <div id="noResult" v-if="resultFlag">
+       Sorry Chef... no such meal here
     </div>
 </template>
 
 <script>
+import MealBar from '../components/MealBar.vue'
 import { ref } from 'vue'
 import getMeal from '@/tools/getMeal.js'
-const {meals, error, getMealByName} = getMeal()
+const {meals, error, getMealsByName} = getMeal()
 export default {
+    components:{ MealBar },
     setup(){
         const mealName = ref(null)
-
+        let resultFlag = ref(false)
         const handleSubmit = async () =>{
-            const res = await getMealByName(mealName.value)
+            const res = await getMealsByName(mealName.value)
+            console.log(meals.value)
+            console.log(resultFlag.value)
+            resultFlag.value = false
+            if (meals.value == null && mealName.value != null){
+                resultFlag.value = true
+            }
         }
-
-        return {mealName, handleSubmit, getMealByName, meals, error}
+        return {mealName, handleSubmit, getMealsByName, meals, error, resultFlag}
     }
-
 }
 </script>
 
@@ -99,7 +109,40 @@ export default {
     font-size: 2em;
 }
 .searchForm{
+    max-width: 500px;
+    background:none;
+    border: none;
+    box-shadow: none;
     margin: 20px auto;
-}
+    display: grid;
+    grid-template-columns: 6fr 1fr ;
+    grid-template-rows:24px 40px;
+    column-gap: 20px;
+    row-gap: 15px;
+    /* justify-self: center; */
+    padding: 10px 20px ;
 
+}
+.searchForm #searchButton{
+    place-self:center;
+    /* margin-bottom: 0; */
+}
+.searchForm #searchBar{
+    place-self: center;
+}
+.searchForm input{
+    place-self: center;
+    margin-bottom: 0;
+    margin-top:0;
+}
+.searchForm label{
+   grid-column-start: 1;
+   grid-column-end: 3;
+}
+#noResult{
+    font-family: 'Great Vibes', cursive; 
+    font-size: 2em;
+    text-align: center;
+    margin: 40px auto;
+}
 </style>
