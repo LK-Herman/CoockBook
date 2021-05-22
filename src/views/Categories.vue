@@ -13,6 +13,7 @@
             <h3 > <a class="catTitle" :href="'#c'+cat.strCategory">{{ cat.strCategory }} </a></h3>
         </div>
     </div>
+    
     <div v-if="categories.length" class="catContainer">
         <div class="catSingle" v-for="cat in categories" :key="cat.idCategory">
             
@@ -23,7 +24,8 @@
                 </div>
         </div>
     </div>
-    <div v-if="!categories.length">Loading data...</div>
+    <!-- <div v-if="!categories.length">Loading data...</div> -->
+    <div v-if="!categories.length" class="lds-circle"><div></div></div>
 </div>
 </template>
 
@@ -104,7 +106,7 @@ text-align: center;
     flex-wrap: wrap;
     justify-content: space-between;
     margin:10px 10px;
-    padding: 10px;
+    padding: 20px 0;
    
     border-radius: 0px;
     

@@ -1,11 +1,9 @@
 <template>
 <div class="error" v-if="error">{{error}}</div>
-<div v-if="meal">
+<div class="entireBar" v-if="meal">
+  <router-link :to="{name:'MealDetails', params: {id: meal.idMeal} }">
               
       <div class="mealListItem" >
-                  <router-link class="linkArea" :to="{name:'MealDetails', params: {id: meal.idMeal} }">
-                  
-                  </router-link>
                   <img class="image" :src="meal.strMealThumb">
                     <div>
                         <p :class="{titleMeal: !titleFontFlag, titleMealSmall: titleFontFlag}">{{meal.strMeal}}</p>
@@ -24,11 +22,16 @@
                                 <li v-if="meal.strIngredient7">{{meal.strIngredient7}}</li>
                         </ul>
                     </div>
-                    <div v-if="favorites" class="favoriteButtons">
-                      <button @click="handleRemoveEvent" class="delBtn">Remove</button>
-                  </div>
                     <!-- <h3>{{ meal.idMeal }}</h3> -->
       </div>
+  </router-link>
+  <div class="boardButton">
+    <img class="board" src="@/assets/board.png">
+    <div v-if="favorites" class="favoriteButtons">
+      <button @click="handleRemoveEvent" class="delBtn">Remove</button>
+    </div>
+    
+  </div>
   <div class="error" v-if="errorFirebase">{{errorFirebase}}</div>
 </div>
 </template>
@@ -65,33 +68,37 @@ export default {
 </script>
 
 <style>
-.linkArea{
-    position: absolute;
-    width: 85%;
-    height: 130px;
-    margin-left:auto;
-    /* background: rgba(20,250,250,0.4); */
-    border-radius: 60px;
+.entireBar{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+.board{
+  
+  max-height: 90px;
+  transform: translateX(-50px);
+}
+.boardButton{
+  position: relative;
 }
 .mealListItem{
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 5fr 4fr auto;
-    justify-self: start;
-    justify-items: start;
-    align-self: center;
-    align-items: center;
-    column-gap: 20px;
-    padding: auto;
-    border-radius: 100px;
-    margin:15px auto ;
-    max-width: 900px;
-    border-bottom: solid 1px;
-    transition: ease 0.3s;
-    box-shadow: 2px 2px 3px rgba(50,50,50,0.5); 
-    background: rgb(248, 248, 248);
-    text-align: left;
-    z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 5fr 4fr auto;
+  justify-self: start;
+  justify-items: start;
+  align-self: center;
+  align-items: center;
+  column-gap: 20px;
+  padding: auto;
+  border-radius: 100px;
+  margin:15px auto ;
+  max-width: 900px;
+  border-bottom: solid 1px;
+  transition: ease 0.3s;
+  box-shadow: 2px 2px 3px rgba(50,50,50,0.5); 
+  background: rgb(248, 248, 248);
+  text-align: left;
+  z-index: 1;
   }
 
   .mealListItem:hover{
@@ -145,11 +152,15 @@ export default {
     margin-left:18px;
 }
 .favoriteButtons{
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  overflow: hidden;
-  padding: 15px 15px;
+
+  position: absolute;
+  top: 6px;
+  left: -80px;
+  /* display: flex; */
+  /* flex-flow: column wrap; */
+  /* justify-content: center; */
+  /* overflow: hidden; */
+  /* padding: 15px 15px; */
   margin:0;
 }
 .favoriteButtons button{

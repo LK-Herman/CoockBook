@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import MealBar from '../components/MealBar.vue'
+import MealBar from './MealBar.vue'
 import useDocument from '@/tools/useDocument.js'
 export default {
   components: { MealBar },

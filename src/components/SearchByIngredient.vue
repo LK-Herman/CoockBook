@@ -1,27 +1,30 @@
 <template>
-<div class="areaPage">
-        <div class="categoryTitle">
-            <div id="luigiDiv">
-                <img id="luigi" src="@/assets/chefa.png">
-            </div>
-            <h1>Food ingredients</h1>
+<div v-if="caiList" >
+        <div class="areaPage">
+                <div class="categoryTitle">
+                    <div id="luigiDiv">
+                        <img id="luigi" src="@/assets/chefa.png">
+                    </div>
+                    <h1>Food ingredients</h1>
+                </div>
+        <div v-if="!meals">
+        <div class="areaMenu" v-if="caiList">
+                <div class="areaTitle"  v-for="ingredient in caiList" :key="ingredient.idIngredient">
+                    <p class="singleOne" @click="handleClickIngredient(ingredient.strIngredient)" >{{ingredient.strIngredient}}</p>
+                </div>
         </div>
-<div v-if="!meals">
-  <div class="areaMenu" v-if="caiList">
-        <div class="areaTitle"  v-for="ingredient in caiList" :key="ingredient.idIngredient">
-            <p class="singleOne" @click="handleClickIngredient(ingredient.strIngredient)" >{{ingredient.strIngredient}}</p>
         </div>
-  </div>
-</div>
-<div class="mealBar">
-    <MealList v-if="meals" :meals="meals"/>
-</div>
+        <div class="mealBar">
+            <MealList v-if="meals" :meals="meals"/>
+        </div>
 
-      <!-- <router-link :to="{name:'MealDetails', params: {id: playlist.id} }"> -->
-      <!-- </router-link> -->
+            <!-- <router-link :to="{name:'MealDetails', params: {id: playlist.id} }"> -->
+            <!-- </router-link> -->
 
 
+        </div>
 </div>
+<div v-if="!caiList" class="lds-circle"><div></div></div>
 </template>
 
 <script>
@@ -86,7 +89,7 @@ h1{
     justify-content: space-between;
     margin-top:10px;
     margin-bottom: 40px;
-    padding: 10px;
+    padding: 20px 0;
    
     border-radius: 0px;
     

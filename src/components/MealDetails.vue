@@ -1,4 +1,5 @@
 <template>
+<div v-if="meal">
    <div v-if="meal" class="mealContainer">
      <div class="mealSubContainer">
         <h2 class="recipeTitle">{{meal.strMeal}}</h2>
@@ -33,7 +34,6 @@
         <div class="categoryContainer">
             
             <AddToFavorites v-if="favorites && favorites" :buttonId="'favButton'" :meal="meal" :favorites="favorites" />  
-            <button>Remove from favorites</button>  
             <div>
               <h4>CATEGORY:</h4>
               <p>{{meal.strCategory}}</p>
@@ -72,6 +72,8 @@
 
 
   </div>
+</div>
+<div v-if="!meal" class="lds-circle"><div></div></div>
 </template>
 
 <script>

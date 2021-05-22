@@ -1,22 +1,83 @@
 <template>
-<div class="areaPage">
-        <div class="categoryTitle">
-            <div id="luigiDiv">
-                <img id="luigi" src="@/assets/chefa.png">
+<div v-if="caiList">
+    <div class="areaPage">
+            <div class="categoryTitle">
+                <div id="luigiDiv">
+                    <img id="luigi" src="@/assets/chefa.png">
+                </div>
+                <h1>Food categories</h1>
             </div>
-            <h1>Food categories</h1>
-        </div>
-  <div class="areaMenu" v-if="caiList">
-        <div class="areaTitle"  v-for="category in caiList" :key="category.strCategory">
-            <p @click="handleClickArea(category.strCategory)" >{{category.strCategory}}</p>
-        </div>
-  </div>
-    <MealList v-if="meals" :meals="meals"/>
-   
-      <!-- <router-link :to="{name:'MealDetails', params: {id: playlist.id} }"> -->
-      <!-- </router-link> -->
+            <div class="areaMenu" v-if="caiList">
+                  <div class="areaTitle"  v-for="category in caiList" :key="category.strCategory">
+                      <p @click="handleClickArea(category.strCategory)" >{{category.strCategory}}</p>
+                  </div>
+            </div>
+            <div class="categoryImages" v-if="caiList && !meals">
+                <div>
+                <img @click="handleClickArea('Beef')" src="https://www.themealdb.com/images/category/beef.png">
+                <p>Beaf</p>
+                </div>
+                <div>
+                <img @click="handleClickArea('Chicken')" src="https://www.themealdb.com/images/category/chicken.png">
+                <p>Chicken</p>
+                </div>
+                <div>
+                <img @click="handleClickArea('Dessert')" src="https://www.themealdb.com/images/category/dessert.png">
+                <p>Dessert</p>
+                </div>
+                <div>
+                <img @click="handleClickArea('Lamb')" src="https://www.themealdb.com/images/category/lamb.png">
+                <p>Lamb</p>
+                </div>
 
-</div>
+                <div>
+                <img @click="handleClickArea('Miscellaneous')" src="https://www.themealdb.com/images/category/miscellaneous.png">
+                <p>Miscellaneous</p>
+                </div>
+                <div>
+                <img @click="handleClickArea('Pasta')" src="https://www.themealdb.com/images/category/pasta.png">
+                <p>Pasta</p>
+                </div>
+                <div>
+                <img @click="handleClickArea('Pork')" src="https://www.themealdb.com/images/category/pork.png">
+                <p>Pork</p>
+                </div>
+                <div>
+                <img @click="handleClickArea('Seafood')" src="https://www.themealdb.com/images/category/seafood.png">
+                <p>Seafood</p>
+                </div>
+                <div>
+                <img @click="handleClickArea('Side')" src="https://www.themealdb.com/images/category/side.png">
+                <p>Side</p>
+                </div>
+                <div>
+                <img @click="handleClickArea('Starter')" src="https://www.themealdb.com/images/category/starter.png">
+                <p>Starter</p>
+                </div>
+                <div>
+                <img @click="handleClickArea('Vegan')" src="https://www.themealdb.com/images/category/vegan.png">
+                <p>Vegan</p>
+                </div>
+                <div>
+                <img @click="handleClickArea('Vegetarian')" src="https://www.themealdb.com/images/category/vegetarian.png">
+                <p>Vegetarian</p>
+                </div>
+                <div>
+                <img @click="handleClickArea('Breakfast')" src="https://www.themealdb.com/images/category/breakfast.png">
+                <p>Breakfast</p>
+                </div>
+                <div>
+                <img @click="handleClickArea('Goat')" src="https://www.themealdb.com/images/category/goat.png">
+                <p>Goat</p>
+                </div>
+            </div>
+            <MealList v-if="meals" :meals="meals"/>
+      
+          
+
+    </div>
+</div>    
+<div v-if="!caiList" class="lds-circle"><div></div></div>
 </template>
 
 <script>
@@ -42,6 +103,36 @@ setup(){
 </script>
 
 <style scoped>
+.categoryImages{
+  display: flex;
+  flex-flow: row wrap;
+  padding: 20px auto;
+  margin: auto;
+  justify-content: space-around;
+  margin-bottom: 100px;
+}
+.categoryImages p{
+  text-align: center;
+  margin: 0;
+  font-family: 'Great Vibes', cursive;
+  font-size: 2em;
+  font-weight: 400;
+
+}
+.categoryImages img{
+  max-height: 120px;
+  margin: 15px 7px;
+  padding: 0px 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: ease 0.5;
+
+}
+.categoryImages img:hover{
+  transition: ease 0.5;
+  transform: scale(1.1);
+
+}
 .areaPage{
      margin-top: -30px;
 }
@@ -80,7 +171,7 @@ h1{
     justify-content: space-between;
     margin-top:10px;
     margin-bottom: 40px;
-    padding: 10px;
+    padding: 20px 0;
    
     border-radius: 0px;
     

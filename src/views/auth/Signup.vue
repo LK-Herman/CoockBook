@@ -26,7 +26,7 @@
                 <img class="googleLogo" src="@/assets/facebook.png" >
                 <p> Sign up with Facebook</p>
             </div>
-            <div v-if="isPending">Loading...</div>
+            <div v-if="isPending" class="lds-circle"><div></div></div> 
              <div class="signupLink">
                     <p>
                         Allready got the account. Go to <router-link :to="{name: 'Login'}">Login</router-link> form

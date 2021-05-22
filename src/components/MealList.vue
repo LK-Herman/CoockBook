@@ -4,10 +4,11 @@
         <MealBar :passedMealId="meal.idMeal"/>
     </div>
   </div>
+  <div v-if="!meals" class="lds-circle"><div></div></div>
 </template>
 
 <script>
-import MealBar from '../components/MealBar.vue'
+import MealBar from './MealBar.vue'
 import Home from '../views/Home.vue'
 export default {
     components: { MealBar},

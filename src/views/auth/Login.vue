@@ -14,7 +14,7 @@
                 
                 <div v-if="error" class="error">{{ error }}</div>
                 <div v-if="errorSign" class="error">{{ errorSign }}</div>
-                <div v-if="isPending">Loading...</div>
+                <div v-if="isPending" class="lds-circle"><div></div></div> 
                 
                 <div class="googleSignup" @click="handleGoogleSignup">
                     <img class="googleLogo" src="@/assets/google.png" >
