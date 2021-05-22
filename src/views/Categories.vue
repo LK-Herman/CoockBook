@@ -44,7 +44,6 @@ export default {
         if (!data.ok){
           throw Error('No data available')
         }
-        //posts.value = await data.json()
         categories.value = await data.json()
         categories.value = categories.value.categories
         

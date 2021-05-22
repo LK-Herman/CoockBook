@@ -50,12 +50,10 @@ export default {
             if(meal.value.strMeal.length > 32){
                 titleFontFlag.value = true
             }
-                await console.log(titleFontFlag.value)
         })
        const handleRemoveEvent = async ()=>{
            const res = await deleteDoc()
            removeComment.value = 'Meal: '+ meal.value.strMeal + ' was removed from favorites.'
-           console.log(removeComment.value)
        }
 
         return {meal, error, errorFirebase, isPending, titleFontFlag, handleRemoveEvent}

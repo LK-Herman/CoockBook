@@ -93,7 +93,7 @@ input, textarea {
     }
     .mealContainer .mealSubContainer{
     display: grid;
-    grid-template-columns: 5fr 3fr;
+    grid-template-columns: 300px auto;
     grid-template-rows: auto auto;
     column-gap: 40px;
     align-self: start;
@@ -107,6 +107,8 @@ input, textarea {
     margin-bottom: 20px ;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
   }
   .ingrContainer .list{
     padding-top: 10px;
@@ -130,14 +132,14 @@ input, textarea {
   .instructionsContainer{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 20px;
+    column-gap: 50px;
     text-align: justify;
     margin-top:30px;
   }
   .instructionsContainerNoMovie{
     display: grid;
     grid-template-columns: 1fr;
-    column-gap: 20px;
+    column-gap: 50px;
     text-align: justify;
     margin-top:30px;
   }
