@@ -1,38 +1,46 @@
 <template>
+<div class="error" v-if="error">{{error}}</div>
 <div v-if="meal">
-  <div class="mealListItem" >
-          
-              <img class="image" :src="meal.strMealThumb">
-                <div>
-                    <p :class="{titleMeal: !titleFontFlag, titleMealSmall: titleFontFlag}">{{meal.strMeal}}</p>
-                    <p>{{meal.strArea}} {{meal.strCategory}}</p>
-                </div>
-                <div class="ingredientsList">
-                    <h4 id="ingrHeader"><span class="material-icons">lunch_dining</span> Main ingredients:</h4>
-                    <ul>
-                            <li v-if="meal.strIngredient1">{{meal.strIngredient1}}</li>
-                            <li v-if="meal.strIngredient2">{{meal.strIngredient2}}</li>
-                            <li v-if="meal.strIngredient3">{{meal.strIngredient3}}</li>
-                    </ul>
-                    <ul >
-                            <li v-if="meal.strIngredient5">{{meal.strIngredient5}}</li>
-                            <li v-if="meal.strIngredient6">{{meal.strIngredient6}}</li>
-                            <li v-if="meal.strIngredient7">{{meal.strIngredient7}}</li>
-                    </ul>
-                </div>
-               
-                <!-- <h3>{{ meal.idMeal }}</h3> -->
+  <router-link :to="{name:'MealDetails', params: {id: meal.idMeal} }">
+              
+      <div class="mealListItem" >
+                  <img class="image" :src="meal.strMealThumb">
+                    <div>
+                        <p :class="{titleMeal: !titleFontFlag, titleMealSmall: titleFontFlag}">{{meal.strMeal}}</p>
+                        <p>{{meal.strArea}} {{meal.strCategory}}</p>
+                    </div>
+                    <div class="ingredientsList">
+                        <h4 id="ingrHeader"><span class="material-icons">lunch_dining</span> Main ingredients:</h4>
+                        <ul>
+                                <li v-if="meal.strIngredient1">{{meal.strIngredient1}}</li>
+                                <li v-if="meal.strIngredient2">{{meal.strIngredient2}}</li>
+                                <li v-if="meal.strIngredient3">{{meal.strIngredient3}}</li>
+                        </ul>
+                        <ul >
+                                <li v-if="meal.strIngredient5">{{meal.strIngredient5}}</li>
+                                <li v-if="meal.strIngredient6">{{meal.strIngredient6}}</li>
+                                <li v-if="meal.strIngredient7">{{meal.strIngredient7}}</li>
+                        </ul>
+                    </div>
+                    <div v-if="favorites" class="favoriteButtons">
+                      <button @click="handleRemoveEvent" class="delBtn">Remove</button>
+                  </div>
+                    <!-- <h3>{{ meal.idMeal }}</h3> -->
       </div>
+  </router-link>
+  <div class="error" v-if="errorFirebase">{{errorFirebase}}</div>
 </div>
 </template>
 
 <script>
 import getMeal from '@/tools/getMeal.js'
 import { onBeforeMount, onMounted, ref } from 'vue'
+import useDocument from '@/tools/useDocument.js'
 export default {
-    props: ['passedMealId'],
+    props: ['passedMealId', 'favorites', 'favId'],
     setup(props){
         const {meal, error, isPending, getMealById } = getMeal()
+        const {error: errorFirebase, isPending: isPendingFirebase, deleteDoc } = useDocument('favorites',props.favId )
         let titleFontFlag = ref(false)
         
         onBeforeMount( async ()=>{
@@ -43,9 +51,13 @@ export default {
             }
                 await console.log(titleFontFlag.value)
         })
-       
+       const handleRemoveEvent = async ()=>{
+           const res = await deleteDoc()
+           removeComment.value = 'Meal: '+ meal.value.strMeal + ' was removed from favorites.'
+           console.log(removeComment.value)
+       }
 
-        return {meal, error, isPending, titleFontFlag}
+        return {meal, error, errorFirebase, isPending, titleFontFlag, handleRemoveEvent}
     }
 
 }
@@ -54,7 +66,7 @@ export default {
 <style>
 .mealListItem{
   display: grid;
-  grid-template-columns: 1fr 5fr 4fr;
+  grid-template-columns: 1fr 5fr 4fr auto;
   justify-self: start;
   justify-items: start;
   align-self: center;
@@ -68,6 +80,8 @@ export default {
   transition: ease 0.3s;
   box-shadow: 2px 2px 3px rgba(50,50,50,0.5); 
   background: rgb(248, 248, 248);
+  text-align: left;
+  z-index: 1;
   }
 
   .mealListItem:hover{
@@ -97,7 +111,7 @@ export default {
 .mealListItem .ingredientsList{
     align-self: center;
     justify-self: start;
-    margin-right:60px;
+    /* margin-right:60px; */
     display: grid;
     grid-template-columns: auto auto;
     column-gap: 24px;
@@ -119,5 +133,30 @@ export default {
 }
 .mealListItem li{
     margin-left:18px;
+}
+.favoriteButtons{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  overflow: hidden;
+  padding: 15px 15px;
+  margin:0;
+}
+.favoriteButtons button{
+  color: white; 
+  padding: 24px 8px;
+  border-radius: 50%;
+  font-weight: 400;
+}
+
+.delBtn{
+  background: var(--button1);
+  box-shadow: inset 14px 0px 10px rgb(0, 121, 177);
+  z-index: 2;
+
+}
+.delBtn:hover{
+  background: var(--button2);
+  box-shadow: inset 14px 0px 10px rgb(177, 121, 0);
 }
 </style>

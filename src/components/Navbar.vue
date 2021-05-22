@@ -34,7 +34,7 @@
         </nav>
         <div v-if="user" class="links2">
             <router-link class="btnNav" :to="{name: 'Categories'}">Food Categories</router-link>
-            <router-link class="btnNav" :to="{name: 'Home'}">Random recipe</router-link>
+            <router-link class="btnNav" :to="{name: 'Home'}">Random recipes</router-link>
             <router-link class="btnNav" :to="{name: 'SearchByCategory'}">Search by category</router-link>
             <router-link class="btnNav" :to="{name: 'SearchByArea'}">Search by world region</router-link>
             <router-link class="btnNav" :to="{name: 'SearchByName'}">Search by name</router-link>

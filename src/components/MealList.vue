@@ -10,7 +10,7 @@
 import MealBar from '../components/MealBar.vue'
 import Home from '../views/Home.vue'
 export default {
-    components: { MealBar, Home },
+    components: { MealBar},
     props:['meals']
 }
 </script>

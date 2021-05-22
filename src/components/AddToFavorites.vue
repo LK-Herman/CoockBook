@@ -26,7 +26,7 @@ export default {
     const handleEvent = async () =>{
           mealButtonFlag.value = await  docInCollection(props.favorites, props.meal.idMeal)
           if (mealButtonFlag.value) {
-              document.getElementById(props.buttonId).innerHTML = "Added to favorites"
+              document.getElementById(props.buttonId).innerHTML = '<span class="material-icons">favorite</span>Your favorite'
               document.getElementById(props.buttonId).disabled = true
           }
       }
@@ -59,13 +59,17 @@ export default {
                 isPending.value = false
          }
       }
-
-
     return { handleEvent, docInCollection, handleAddToFavotites, error, isPending, mealButtonFlag}
 }
 }
 </script>
 
-<style>
+<style scoped>
+button {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+}
 
 </style>

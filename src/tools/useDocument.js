@@ -17,6 +17,7 @@ const useDocument = (collection, id) => {
             return res            
         } catch (err) {
             console.log(err.message)
+            console.log(id)
             error.value = err.message
             isPending.value = false
         }
