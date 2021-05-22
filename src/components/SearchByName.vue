@@ -6,8 +6,8 @@
         
         <button id="searchButton">Search</button>
     </form>
-    <div v-if="meals">
-        <MealBar :meals="meals"/>
+    <div>
+        <MealList v-if="meals" :meals="meals"/>
 
         <!-- <div v-for="meal in meals" :key="meal.idMeal">
         
@@ -41,12 +41,12 @@
 </template>
 
 <script>
-import MealBar from '../components/MealBar.vue'
+import MealList from './MealList.vue'
 import { ref } from 'vue'
 import getMeal from '@/tools/getMeal.js'
 const {meals, error, getMealsByName} = getMeal()
 export default {
-    components:{ MealBar },
+    components:{ MealList },
     setup(){
         const mealName = ref(null)
         let resultFlag = ref(false)

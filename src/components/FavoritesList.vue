@@ -21,11 +21,14 @@
 </template>
 
 <script>
+import useDocument from '@/tools/useDocument.js'
 export default {
 props: ['favorites'],
 
+
 setup(){
-  
+  const { error, deleteDoc, isPending } = useDocument('favorites', )
+
   return {}
 }
 }

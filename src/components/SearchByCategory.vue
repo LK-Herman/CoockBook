@@ -11,23 +11,20 @@
             <p @click="handleClickArea(category.strCategory)" >{{category.strCategory}}</p>
         </div>
   </div>
-    <MealBar :meals="meals"/>
+    <MealList v-if="meals" :meals="meals"/>
    
-
       <!-- <router-link :to="{name:'MealDetails', params: {id: playlist.id} }"> -->
       <!-- </router-link> -->
-
-
 
 </div>
 </template>
 
 <script>
-import MealBar from '../components/MealBar.vue'
+import MealList from './MealList.vue'
 import getMeal from '@/tools/getMeal.js'
 import { onMounted } from 'vue'
 export default {
-components:{ MealBar },
+components:{ MealList },
 setup(){
     const {caiList, error, getCAIList, meals, getMealsByCAI} = getMeal()
 

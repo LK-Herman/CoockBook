@@ -1,11 +1,12 @@
 <template>
-  <button v-if="favorites.length"
-                :id="buttonId" 
-                :class="{buttonDisabled : mealButtonFlag}" 
-                @loadeddata="handleEvent()"
-                @click="handleAddToFavotites(meal, buttonId)"
-                ><span class="material-icons">favorite</span>Add to your favorites
-        </button>
+    <!-- v-if="favorites.length"  -->
+  <button 
+            :id="buttonId" 
+            :class="{buttonDisabled : mealButtonFlag}" 
+            @loadeddata="handleEvent()"
+            @click="handleAddToFavotites(meal, buttonId)"
+            ><span class="material-icons">favorite</span>Add to your favorites
+    </button>
 </template>
 
 <script>

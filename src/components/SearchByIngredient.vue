@@ -14,7 +14,7 @@
   </div>
 </div>
 <div class="mealBar">
-    <MealBar :meals="meals"/>
+    <MealList v-if="meals" :meals="meals"/>
 </div>
 
       <!-- <router-link :to="{name:'MealDetails', params: {id: playlist.id} }"> -->
@@ -25,11 +25,11 @@
 </template>
 
 <script>
-import MealBar from '../components/MealBar.vue'
+import MealList from './MealList.vue'
 import getMeal from '@/tools/getMeal.js'
 import { onMounted } from 'vue'
 export default {
-components:{ MealBar },
+components:{ MealList },
 setup(){
     const {caiList, error, getCAIList, meals, getMealsByCAI} = getMeal()
 
