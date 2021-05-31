@@ -5,15 +5,14 @@
                 <h3 class="formH3">Login</h3>
                 <input type="email" placeholder="Email" v-model="email">
                 <input :type="showPass" placeholder="Password" v-model="password">
-                <div v-if="error" class="error">{{ error }}</div>
                 <button class="loginButton" >Log in</button>
                 <div v-if="!isPending" class="logbuttons">
                     <div></div>
                     <span :class="{eye_active: showPass !== 'password'}" class="material-icons eye" @click="toggleShowPass">visibility</span>
                 </div>
                 
-                <div v-if="error" class="error">{{ error }}</div>
-                <div v-if="errorSign" class="error">{{ errorSign }}</div>
+                <div v-if="errorLogin" class="error">{{ errorLogin }}</div>
+                <!-- <div v-if="errorSign" class="error">{{ errorSign }}</div> -->
                 <div v-if="isPending" class="lds-circle"><div></div></div> 
                 
                 <div class="googleSignup" @click="handleGoogleSignup">
@@ -51,7 +50,7 @@ setup(){
         { showPass.value = 'text' } else { showPass.value = "password" }
     } 
      
-    const {error, login, isPending} = useLogin()
+    const {error: errorLogin, login, isPending} = useLogin()
     const {error:errorSign,  signupGoogle, signupFacebook} = useSignup()
     const email = ref('')
     const password = ref('')
@@ -59,25 +58,25 @@ setup(){
     
     const handleSubmit = async () => {
         const res = await login(email.value, password.value)
-        if(!error.value){
+        if(!errorLogin.value){
             router.push({name: 'Home'})
         }
     }
 
      const handleGoogleSignup = async () => {
         const res = await signupGoogle()
-        if(!error.value){
+        if(!errorSign.value){
             router.push({name: 'Home'})       
         }
     }
     const handleFacebookSignup = async () => {
         const res = await signupFacebook()
-        if(!error.value){
+        if(!errorSign.value){
             router.push({name: 'Home'})       
         }
     }
 
-    return { showPass, toggleShowPass, email, password, handleSubmit, error, isPending, handleGoogleSignup, handleFacebookSignup, errorSign }
+    return { showPass, toggleShowPass, email, password, handleSubmit, errorLogin, isPending, handleGoogleSignup, handleFacebookSignup, errorSign }
 }
 }
 
@@ -89,7 +88,7 @@ setup(){
     justify-content: space-between;
     align-items: center;
 }
-.eye {
+form .eye {
   color: var(--button1);  
   cursor: pointer;
   text-decoration: none;
@@ -108,7 +107,7 @@ setup(){
     margin: 0px;
     width: 100%;
 }
-.eye_active{
+form .eye_active{
     color:var(--button2);
 }
 .googleLogo{

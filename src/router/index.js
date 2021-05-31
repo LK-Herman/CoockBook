@@ -8,6 +8,7 @@ import SearchByArea from '../components/SearchByArea.vue'
 import SearchByCategory from '../components/SearchByCategory.vue'
 import SearchByIngredient from '../components/SearchByIngredient.vue'
 import Categories from '../views/Categories.vue'
+import About from '../views/About.vue'
 import UserList from '../views/UserList.vue'
 
 // route guard
@@ -27,6 +28,12 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+    beforeEnter: requiredAuth
+  },
+    {
+    path: '/about',
+    name: 'About',
+    component: About,
     beforeEnter: requiredAuth
   },
   {
@@ -60,19 +67,19 @@ const routes = [
     props: true
   },
   {
-    path: '/meals',
+    path: '/byName',
     name: 'SearchByName',
     component: SearchByName,
     beforeEnter: requiredAuth,
   },
   {
-    path: '/areas',
+    path: '/byAreas',
     name: 'SearchByArea',
     component: SearchByArea,
     beforeEnter: requiredAuth,
   },
   {
-    path: '/categories',
+    path: '/byCategories',
     name: 'SearchByCategory',
     component: SearchByCategory,
     beforeEnter: requiredAuth,

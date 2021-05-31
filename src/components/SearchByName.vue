@@ -7,36 +7,16 @@
         <button id="searchButton">Search</button>
     </form>
     <div>
-        <MealList v-if="meals" :meals="meals"/>
-
-        <!-- <div v-for="meal in meals" :key="meal.idMeal">
-        
-            <div class="testing">
-                <img class="image" :src="meal.strMealThumb">
-                <div>
-                    <p id="titleMeal">{{meal.strMeal}}</p>
-                    <p>{{meal.strArea}} {{meal.strCategory}}</p>
-                </div>
-                <div>
-                        <p v-if="meal.strIngredient1">{{meal.strIngredient1}}</p>
-                        <p v-if="meal.strIngredient2">{{meal.strIngredient2}}</p>
-                        <p v-if="meal.strIngredient3">{{meal.strIngredient3}}</p>
-                        <p v-if="meal.strIngredient4">{{meal.strIngredient4}}</p>
-                </div>
-                <div>
-                        <p v-if="meal.strIngredient5">{{meal.strIngredient5}}</p>
-                        <p v-if="meal.strIngredient6">{{meal.strIngredient6}}</p>
-                        <p v-if="meal.strIngredient7">{{meal.strIngredient7}}</p>
-                        <p v-if="meal.strIngredient8">{{meal.strIngredient8}}</p>
-                </div>
-               
-                <h3>{{ meal.idMeal }}</h3>
-          
-            </div>
-        </div> -->
-    </div>
+        <div v-if="isPending">
+             <div class="lds-circle"><div></div></div> 
+        </div>
+        <div v-else>
+            <MealList v-if="meals" :meals="meals"/>
+        </div>
+    
     <div id="noResult" v-if="resultFlag">
        Sorry Chef... no such meal here
+    </div>
     </div>
 </template>
 
@@ -44,7 +24,7 @@
 import MealList from './MealList.vue'
 import { ref } from 'vue'
 import getMeal from '@/tools/getMeal.js'
-const {meals, error, getMealsByName} = getMeal()
+const {meals, error, isPending, getMealsByName} = getMeal()
 export default {
     components:{ MealList },
     setup(){
@@ -59,7 +39,7 @@ export default {
                 resultFlag.value = true
             }
         }
-        return {mealName, handleSubmit, getMealsByName, meals, error, resultFlag}
+        return {isPending, mealName, handleSubmit, getMealsByName, meals, error, resultFlag}
     }
 }
 </script>

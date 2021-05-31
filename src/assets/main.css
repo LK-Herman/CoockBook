@@ -56,11 +56,15 @@ form {
     max-width: 400px;
     min-width: 300px;
     margin: 0;
+    justify-items: center;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 1px 2px 3px rgba(50,50,50,0.5);
     border: 1px solid var(--secondary);
     background: rgb(246, 246, 246);
+}
+.formContainer form{
+  text-align: center;
 }
 
 input, textarea {
@@ -194,7 +198,7 @@ input, textarea {
     height: 64px;
     margin: 8px;
     border-radius: 50%;
-    background: #fff;
+    background:var(--button2);
     animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
   }
   @keyframes lds-circle {

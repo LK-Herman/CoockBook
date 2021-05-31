@@ -9,14 +9,18 @@
             <div class="links">
                 <div v-if="user">
                     <router-link :to="{name: 'UserList' }" class="play"> Favorites </router-link>      
-                    <span>Welcome {{user.displayName}}</span>
+                </div>
+                <!-- <div><span id="userNameDiv"></span></div> -->
+                <div v-if="user">
+                    <span v-if="user.displayName" id="userNameDiv">Welcome {{user.displayName}}</span>
+                    <span v-else id="userNameDiv">Welcome {{user.email}}</span>
                 </div>
                 <div v-if="user">
                     <div v-if="user.photoURL !== null" >
-                        <img :src="user.photoURL" class="userphoto">
+                        <img :src="user.photoURL" class="userphoto" @click="handleClickTest">
                     </div>
                     <div v-else>
-                        <img src="@/assets/chefa.png">
+                        <img src="@/assets/chefa.png" @click="handleClickTest">
                     </div>
                 </div>
                 <div v-if="user">
@@ -48,6 +52,7 @@
 import { useRouter } from 'vue-router'
 import useLogout from '@/tools/useLogout.js'
 import getUser from '@/tools/getUser.js'
+import { onUpdated, ref, watch } from 'vue'
 
 
 export default {
@@ -55,8 +60,8 @@ export default {
 setup(){
     const { logout, error, isPending } = useLogout()
     const router = useRouter()
-    const { user } = getUser()
-    //@/assets/chefa.png
+    const { user, getUserDisplayName, userName } = getUser()
+    // const userUpdated = ref(null)
     const handleClick = async () =>{
         console.log('start...')
         await logout()
@@ -65,7 +70,42 @@ setup(){
             router.push({name: 'Login'})
         }
     }
-    return { error, isPending, handleClick, user }
+    // watch(user, () => {
+    //     if(user){
+    //        location.reload()
+    //         router.push({name: 'Home'}) 
+            
+    //     }
+    // })
+
+
+    // watch(user, () => {
+    //     console.log('step 1')
+    //     if(user.value && user.value.displayName){
+    //         userUpdated.value = user.value
+    //         console.log('if 1: ', user.value.displayName)
+    //         }else {
+    //             userUpdated.value = null
+    //         }    
+    // })
+    // watch( userUpdated, ()=>{
+    //     console.log('step 2')
+    //     if(user.value){
+    //         if(user.value.displayName) {
+    //             console.log('if 2: ', user.value.displayName)
+    //             document.getElementById("userNameDiv").innerText = "Welcome " + user.value.displayName
+    //             }else{
+    //                 document.getElementById("userNameDiv").innerText = "Welcome " + user.value.email
+    //             }
+    //     }else{
+    //         document.getElementById("userNameDiv").innerText = 'Welcome Chef'
+    //     }
+    // })
+    
+    const handleClickTest = () => {
+        console.log('USER name: ',user.value.displayName)
+    }
+    return { error, isPending, handleClick, user, handleClickTest, getUserDisplayName, userName }
 }
 }
 </script>
