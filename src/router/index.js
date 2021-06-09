@@ -23,6 +23,17 @@ const requiredAuth = (to, from, next) => {
   }
 }
 
+const requiredNoUser = (to, from, next) => {
+  let user = dbAuth.currentUser
+  if (!user){
+    next()
+  } 
+   else {
+     next(from)
+     alert("You are currently logged in. Please log out first")
+   }
+}
+
 const routes = [
   {
     path: '/',
@@ -39,12 +50,14 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    beforeEnter: requiredNoUser
   },
   {
     path: '/signup',
     name: 'Signup',
-    component: Signup
+    component: Signup,
+    beforeEnter: requiredNoUser
   },
   {
     path: '/allCategories',
