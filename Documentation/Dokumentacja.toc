@@ -1,0 +1,46 @@
+\babel@toc {polish}{}
+\contentsline {section}{\numberline {1}Opis funkcjonalny systemu}{4}{section.1}%
+\contentsline {section}{\numberline {2}Opis technologiczny}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Aplikacja desktopowa}{6}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Cargo}{6}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}chrono}{6}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}Cloud Firestore}{6}{subsubsection.2.1.3}%
+\contentsline {subsubsection}{\numberline {2.1.4}Firebase}{6}{subsubsection.2.1.4}%
+\contentsline {subsubsection}{\numberline {2.1.5}Firebase Authentication}{6}{subsubsection.2.1.5}%
+\contentsline {subsubsection}{\numberline {2.1.6}firestore-db-and-auth}{7}{subsubsection.2.1.6}%
+\contentsline {subsubsection}{\numberline {2.1.7}gdk-pixbuf}{7}{subsubsection.2.1.7}%
+\contentsline {subsubsection}{\numberline {2.1.8}gio}{7}{subsubsection.2.1.8}%
+\contentsline {subsubsection}{\numberline {2.1.9}Glade}{7}{subsubsection.2.1.9}%
+\contentsline {subsubsection}{\numberline {2.1.10}glib}{7}{subsubsection.2.1.10}%
+\contentsline {subsubsection}{\numberline {2.1.11}gtk}{7}{subsubsection.2.1.11}%
+\contentsline {subsubsection}{\numberline {2.1.12}GTK+ 3}{7}{subsubsection.2.1.12}%
+\contentsline {subsubsection}{\numberline {2.1.13}oauth2}{7}{subsubsection.2.1.13}%
+\contentsline {subsubsection}{\numberline {2.1.14}open}{8}{subsubsection.2.1.14}%
+\contentsline {subsubsection}{\numberline {2.1.15}rand}{8}{subsubsection.2.1.15}%
+\contentsline {subsubsection}{\numberline {2.1.16}reqwest}{8}{subsubsection.2.1.16}%
+\contentsline {subsubsection}{\numberline {2.1.17}Rust}{8}{subsubsection.2.1.17}%
+\contentsline {subsubsection}{\numberline {2.1.18}serde}{8}{subsubsection.2.1.18}%
+\contentsline {subsubsection}{\numberline {2.1.19}serde\_ json}{8}{subsubsection.2.1.19}%
+\contentsline {subsubsection}{\numberline {2.1.20}url}{8}{subsubsection.2.1.20}%
+\contentsline {subsubsection}{\numberline {2.1.21}Visual studio code}{8}{subsubsection.2.1.21}%
+\contentsline {subsection}{\numberline {2.2}Aplikacja webowa}{9}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}HTML}{9}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}CSS}{9}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}JavaScript}{9}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Vue.js}{9}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}Cypress}{9}{subsubsection.2.2.5}%
+\contentsline {subsubsection}{\numberline {2.2.6}Cloud Firestore}{10}{subsubsection.2.2.6}%
+\contentsline {subsubsection}{\numberline {2.2.7}Firebase}{10}{subsubsection.2.2.7}%
+\contentsline {subsubsection}{\numberline {2.2.8}Firebase Authentication}{10}{subsubsection.2.2.8}%
+\contentsline {subsubsection}{\numberline {2.2.9}firestore-db-and-auth}{10}{subsubsection.2.2.9}%
+\contentsline {subsubsection}{\numberline {2.2.10}Visual studio code}{11}{subsubsection.2.2.10}%
+\contentsline {subsubsection}{\numberline {2.2.11}Postman}{11}{subsubsection.2.2.11}%
+\contentsline {section}{\numberline {3}Wzorce projektowe}{12}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Aplikacja desktopowa}{12}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Aplikacja webowa}{12}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Instrukcja uruchamiania testów i systemu}{13}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Aplikacja desktopowa}{13}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Aplikacja webowa}{13}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Wnioski projektowe}{15}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Aplikacja desktopowa}{15}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Aplikacja webowa}{15}{subsection.5.2}%

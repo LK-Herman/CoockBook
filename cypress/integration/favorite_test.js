@@ -6,10 +6,7 @@ describe('Favorite', () => {
         cy.visit('/login')
         
         cy.get('input[type=email]').type(loginName)
-        
         cy.get('input[type=password]').type(`${password}{enter}`)
-        
-        
         cy.contains('Buongiorno!')
     
     })

@@ -1,0 +1,45 @@
+\BOOKMARK [1][-]{section.1}{Opis funkcjonalny systemu}{}% 1
+\BOOKMARK [1][-]{section.2}{Opis technologiczny}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Aplikacja desktopowa}{section.2}% 3
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Cargo}{subsection.2.1}% 4
+\BOOKMARK [3][-]{subsubsection.2.1.2}{chrono}{subsection.2.1}% 5
+\BOOKMARK [3][-]{subsubsection.2.1.3}{Cloud Firestore}{subsection.2.1}% 6
+\BOOKMARK [3][-]{subsubsection.2.1.4}{Firebase}{subsection.2.1}% 7
+\BOOKMARK [3][-]{subsubsection.2.1.5}{Firebase Authentication}{subsection.2.1}% 8
+\BOOKMARK [3][-]{subsubsection.2.1.6}{firestore-db-and-auth}{subsection.2.1}% 9
+\BOOKMARK [3][-]{subsubsection.2.1.7}{gdk-pixbuf}{subsection.2.1}% 10
+\BOOKMARK [3][-]{subsubsection.2.1.8}{gio}{subsection.2.1}% 11
+\BOOKMARK [3][-]{subsubsection.2.1.9}{Glade}{subsection.2.1}% 12
+\BOOKMARK [3][-]{subsubsection.2.1.10}{glib}{subsection.2.1}% 13
+\BOOKMARK [3][-]{subsubsection.2.1.11}{gtk}{subsection.2.1}% 14
+\BOOKMARK [3][-]{subsubsection.2.1.12}{GTK+ 3}{subsection.2.1}% 15
+\BOOKMARK [3][-]{subsubsection.2.1.13}{oauth2}{subsection.2.1}% 16
+\BOOKMARK [3][-]{subsubsection.2.1.14}{open}{subsection.2.1}% 17
+\BOOKMARK [3][-]{subsubsection.2.1.15}{rand}{subsection.2.1}% 18
+\BOOKMARK [3][-]{subsubsection.2.1.16}{reqwest}{subsection.2.1}% 19
+\BOOKMARK [3][-]{subsubsection.2.1.17}{Rust}{subsection.2.1}% 20
+\BOOKMARK [3][-]{subsubsection.2.1.18}{serde}{subsection.2.1}% 21
+\BOOKMARK [3][-]{subsubsection.2.1.19}{serde\137 json}{subsection.2.1}% 22
+\BOOKMARK [3][-]{subsubsection.2.1.20}{url}{subsection.2.1}% 23
+\BOOKMARK [3][-]{subsubsection.2.1.21}{Visual studio code}{subsection.2.1}% 24
+\BOOKMARK [2][-]{subsection.2.2}{Aplikacja webowa}{section.2}% 25
+\BOOKMARK [3][-]{subsubsection.2.2.1}{HTML}{subsection.2.2}% 26
+\BOOKMARK [3][-]{subsubsection.2.2.2}{CSS}{subsection.2.2}% 27
+\BOOKMARK [3][-]{subsubsection.2.2.3}{JavaScript}{subsection.2.2}% 28
+\BOOKMARK [3][-]{subsubsection.2.2.4}{Vue.js}{subsection.2.2}% 29
+\BOOKMARK [3][-]{subsubsection.2.2.5}{Cypress}{subsection.2.2}% 30
+\BOOKMARK [3][-]{subsubsection.2.2.6}{Cloud Firestore}{subsection.2.2}% 31
+\BOOKMARK [3][-]{subsubsection.2.2.7}{Firebase}{subsection.2.2}% 32
+\BOOKMARK [3][-]{subsubsection.2.2.8}{Firebase Authentication}{subsection.2.2}% 33
+\BOOKMARK [3][-]{subsubsection.2.2.9}{firestore-db-and-auth}{subsection.2.2}% 34
+\BOOKMARK [3][-]{subsubsection.2.2.10}{Visual studio code}{subsection.2.2}% 35
+\BOOKMARK [3][-]{subsubsection.2.2.11}{Postman}{subsection.2.2}% 36
+\BOOKMARK [1][-]{section.3}{Wzorce projektowe}{}% 37
+\BOOKMARK [2][-]{subsection.3.1}{Aplikacja desktopowa}{section.3}% 38
+\BOOKMARK [2][-]{subsection.3.2}{Aplikacja webowa}{section.3}% 39
+\BOOKMARK [1][-]{section.4}{Instrukcja uruchamiania test\363w i systemu}{}% 40
+\BOOKMARK [2][-]{subsection.4.1}{Aplikacja desktopowa}{section.4}% 41
+\BOOKMARK [2][-]{subsection.4.2}{Aplikacja webowa}{section.4}% 42
+\BOOKMARK [1][-]{section.5}{Wnioski projektowe}{}% 43
+\BOOKMARK [2][-]{subsection.5.1}{Aplikacja desktopowa}{section.5}% 44
+\BOOKMARK [2][-]{subsection.5.2}{Aplikacja webowa}{section.5}% 45
