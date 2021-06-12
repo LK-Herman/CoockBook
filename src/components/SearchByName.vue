@@ -30,6 +30,7 @@ export default {
     setup(){
         const mealName = ref(null)
         let resultFlag = ref(false)
+        
         const handleSubmit = async () =>{
             const res = await getMealsByName(mealName.value)
             console.log(meals.value)
